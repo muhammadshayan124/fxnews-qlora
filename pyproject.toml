@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fxnews"
+version = "0.1.0"
+description = "QLoRA fine-tuning of a 1.5B model for financial-news sentiment, compared honestly against rules, TF-IDF and zero/few-shot prompting"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = ["numpy>=1.26", "scipy>=1.11", "scikit-learn>=1.4", "pandas>=2.2", "matplotlib>=3.8"]
+
+[project.optional-dependencies]
+colab = ["torch", "transformers>=4.46,<5", "peft>=0.13", "bitsandbytes>=0.44", "accelerate>=1.0", "datasets>=3.0"]
+dev = ["pytest>=8.0", "ruff>=0.5", "nbformat>=5.9", "datasets>=3.0"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 130
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["B905", "E501"]
