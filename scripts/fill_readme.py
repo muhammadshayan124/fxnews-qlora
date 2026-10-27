@@ -18,7 +18,7 @@ lines.append(f"Setup: `{res['model']}`, LoRA r={res['lora_r']}, {res['epochs']} 
 lines += ["", "Paired exact McNemar versus TF-IDF + logistic regression (Holm-adjusted across comparisons):", "",
           "| model | model-only correct | TF-IDF-only correct | p | p (Holm) |", "|---|---|---|---|---|"]
 for k, v in res["comparisons_vs_tfidf"].items():
-    lines.append(f"| {k} | {v['model_only_correct']} | {v['reference_only_correct']} | {v['p']:.4f} | {v['p_holm']:.4f} |")
+    lines.append(f"| {k} | {v['model_only_correct']} | {v['reference_only_correct']} | {v['p']:.1e} | {v['p_holm']:.1e} |")
 body = "\n".join(lines)
 
 a, b = "<!-- results:start -->", "<!-- results:end -->"
